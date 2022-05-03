@@ -1,0 +1,13 @@
+__pycache__
+.venv
+.vscode
+config
+dist
+build*
+*.zip
+
+# MCDR Packed Plugin
+*.mcdr
+
+# macOS File System
+.DS_Store
