@@ -20,11 +20,35 @@ def on_load(server: PluginServerInterface, prev):
         else:
             command = "give {player} diamond_pickaxe{{display:{{Name:'{{\"text\":\"331钻石镐子\", \"color\":\"aqua\"}}'}}, Enchantments:[{{id:\"minecraft:efficiency\",lvl:3}}, {{id:\"minecraft:unbreaking\",lvl:3}}, {{id:\"minecraft:mending\",lvl:1}}]}} 1".format(player=src.player)
             executeCommand(server, command)
+            
+    # !!haste 命令，获取急迫2效果
+    def haste(src, ctx):
+        if not src.is_player:
+            server.logger.info("[haste] You must be a player to use this command")
+        else:
+            command = "effect give {player} haste 1000000 1".format(player=src.player)
+            executeCommand(server, command)
+            
+    # !!food 命令，获取食物
+    def food(src, ctx):
+        if not src.is_player:
+            server.logger.info("[food] You must be a player to use this command")
+        else:
+            command = "give {player} cooked_beef 128".format(player=src.player)
+            executeCommand(server, command)
 
     # Register help message for !!pickaxe command
     server.register_help_message('!!pickaxe', '获取331钻石镐')
+    server.register_help_message('!!haste', '获取急迫2效果')
+    server.register_help_message('!!food', '获取食物')
     # Register !!pickaxe command
     server.register_command(
         # Set command
         Literal('!!pickaxe').runs(pickaxe)
+    )
+    server.register_command(
+        Literal('!!haste').runs(haste)
+    )
+    server.register_command(
+        Literal('!!food').runs(food)
     )
