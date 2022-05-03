@@ -36,11 +36,22 @@ def on_load(server: PluginServerInterface, prev):
         else:
             command = "give {player} cooked_beef 128".format(player=src.player)
             executeCommand(server, command)
+            
+    # !!transport 命令，获取鞘翅和烟花
+    def transport(src, ctx):
+        if not src.is_player:
+            server.logger.info("[transport] You must be a player to use this command")
+        else:
+            command = "give {player} elytra{{Enchantments:[{{id:\"minecraft:unbreaking\",lvl:3}}, {{id:\"minecraft:mending\",lvl:1}}]}} 1".format(player=src.player)
+            executeCommand(server, command)
+            command = "give {player} firework_rocket 384".format(player=src.player)
+            executeCommand(server, command)
 
     # Register help message for !!pickaxe command
     server.register_help_message('!!pickaxe', '获取331钻石镐')
     server.register_help_message('!!haste', '获取急迫2效果')
     server.register_help_message('!!food', '获取食物')
+    server.register_help_message('!!transport', '获取鞘翅和烟花')
     # Register !!pickaxe command
     server.register_command(
         # Set command
@@ -51,4 +62,7 @@ def on_load(server: PluginServerInterface, prev):
     )
     server.register_command(
         Literal('!!food').runs(food)
+    )
+    server.register_command(
+        Literal('!!transport').runs(transport)
     )
