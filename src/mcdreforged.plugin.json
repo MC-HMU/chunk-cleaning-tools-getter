@@ -1,0 +1,15 @@
+{
+    "id": "chunk_cleaning_tools_getter",
+    "version": "0.0.1",
+    "name": "chunk-cleaning-tools-getter",
+    "description": {
+        "zh_cn": "MCDR 插件，用于指令获取331钻石镐，急迫效果以及食物，用于挖区块入服审核"
+    },
+    "author": [
+		"Cubik65536"
+	],
+    "link": "https://github.com/MC-HMU/chunk-cleaning-tools-getter",
+    "dependencies": {
+        "mcdreforged": ">=2.0.1"
+    }
+}
